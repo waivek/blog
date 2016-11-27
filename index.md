@@ -4,16 +4,16 @@ How do people get new ideas?
 Presumably, the process of creativity, whatever it is, is essentially
 the same in all its branches and varieties, so that the evolution of a
 new art form, a new gadget, a new scientific principle, all involve
-common factors ["https://google.com"](Google) . We are most interested in the
+common factors ^[https://google.com] . We are most interested in the
 “creation” of a new scientific principle or a new application of an old
 one, but we can be general here. 
 
 One way of investigating the problem is to consider the great ideas of
-the past and see just how they were generated. Unfortunately, the method
+the past and see just how they were generated.^[https://wikipedia.org] Unfortunately, the method
 of generation is never clear even to the “generators” themselves.
 
 But what if the same earth-shaking idea occurred to two men,
-simultaneously and independently? Perhaps, the common factors involved
+simultaneously and independently? ^[https://www.reddit.com] Perhaps, the common factors involved
 would be illuminating. Consider the theory of evolution by natural
 selection, independently created by Charles Darwin and Alfred Wallace.
 
