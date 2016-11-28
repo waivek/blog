@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a20280c2-7c99-428f-8f9d-b2b88817810f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Asimov - How do people get new ideas.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/1f642.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/28825249152_cd35912c3c_o.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/fonts.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/gov.uk_logotype_crown.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/govuk-template-print.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/govuk-template.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/govuk-template.js.download" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/lynxpicture.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/main.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/main.min.js.download" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/wp-embed.min.js.download" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Why we use progressive enhancement to build GOV.UK _ Technology at GDS_files/wp-emoji-release.min.js.download" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dadgum.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/link.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/my_pipe.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my/1.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1.html" afterPath="$PROJECT_DIR$/1.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/convert.py" afterPath="$PROJECT_DIR$/convert.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/final.html" afterPath="$PROJECT_DIR$/final.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles.css" afterPath="$PROJECT_DIR$/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template.html" afterPath="$PROJECT_DIR$/template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.html" afterPath="$PROJECT_DIR$/test.html" />
     </list>
     <ignored path="static.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +32,8 @@
       <file leaf-file-name="convert.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/convert.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5072464">
-              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.49758455">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -439,7 +417,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26172465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -548,8 +526,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/convert.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5072464">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.49758455">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

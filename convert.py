@@ -1,11 +1,17 @@
 import pypandoc
 from bs4 import BeautifulSoup
 import sys
-from os.path import basename, splitext, dirname, join
+from os.path import basename, splitext, dirname, join, isfile
+from os import listdir
 
-def get_file_name(path): # path=a/b/c.txt
+def get_file_name_and_ext(path):
     base=basename(path) #base=c.txt
     name,ext=splitext(base) #name,ext=('c', '.txt')
+    return name,ext
+
+
+def get_file_name(path): # path=a/b/c.txt
+    name,ext=get_file_name_and_ext(path)
     return name
 
 def add_permalink_to_paras(soup):
@@ -20,7 +26,6 @@ def markdown_to_html(md_file):
     # __file__ = ..\convert.py
     dir=dirname(__file__) # dir = ..
     template=join(dir, "template.html") # template=..\template.html
-    print(template)
 
     html = pypandoc.convert(
         md_file,
@@ -38,6 +43,24 @@ def write_html(file_name, html):
 
 def convert_markdown_file_to_html_file(markdown_file, html_file):
     write_html(html_file, markdown_to_html(markdown_file))
+    print("%s -> %s" % (markdown_file, html_file))
+
+def is_markdown_file(file):
+    _, ext= get_file_name_and_ext(file)
+    # print(ext)
+    return ext == ".md" and isfile(file)
+
+def get_markdown_files(dir="."):
+    return [f for f in listdir(dir) if is_markdown_file(f)]
+
+def change_ext_to(file, new_ext):
+    return get_file_name(file) + "." + new_ext
+
+def convert_md_in_directory(dir="."):
+    for md_file in get_markdown_files(dir):
+        html_file = change_ext_to(md_file, "html")
+        convert_markdown_file_to_html_file(md_file, html_file)
+
 
 def main():
     if len(sys.argv) == 1:
@@ -47,13 +70,15 @@ def main():
 
     output_file = None
     if len(sys.argv) == 2:
-        output_file = get_file_name(input_file) + ".html" # output_file=1.html
+        output_file = change_ext_to(input_file, "html") # output_file=1.html
     else:
         output_file = sys.argv[2]
 
     convert_markdown_file_to_html_file(input_file, output_file)
 
 if __name__ == "__main__":
-    main()
+    # main()
+    convert_md_in_directory()
 
 
+print("Done")
