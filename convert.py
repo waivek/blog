@@ -1,8 +1,24 @@
+"""Website Converter
+
+Usage:
+  convert.py <input_file> [<output_file>]
+  convert.py --all [<input_directory>] [<output_directory>]
+  convert.py (-h | --help)
+  convert.py --version
+
+Options:
+  -h --help                Show this screen.
+  --version                Show version.
+  --all                    Transform entire directory in-place
+"""
+
 import pypandoc
 from bs4 import BeautifulSoup
 import sys
 from os.path import basename, splitext, dirname, join, isfile
 from os import listdir
+import argparse
+from docopt import docopt
 
 def get_file_name_and_ext(path):
     base=basename(path) #base=c.txt
@@ -17,9 +33,11 @@ def get_file_name(path): # path=a/b/c.txt
 def add_permalink_to_paras(soup):
     for i, p in enumerate(soup.select("div.c1 > p"), start=1):
         p['id'] = "para%d" % i
-        lnk = '<a href="#%s">permalink</a>' % p['id']
+        lnk = '<a href="#%s">§</a>' % p['id']
         new_a = BeautifulSoup(lnk, "lxml").a
-        p.append(new_a)
+        # p.append(new_a)
+        p.insert(0, new_a)
+
     return soup
 
 def markdown_to_html(md_file):
@@ -43,7 +61,6 @@ def write_html(file_name, html):
 
 def convert_markdown_file_to_html_file(markdown_file, html_file):
     write_html(html_file, markdown_to_html(markdown_file))
-    print("%s -> %s" % (markdown_file, html_file))
 
 def is_markdown_file(file):
     _, ext= get_file_name_and_ext(file)
@@ -51,7 +68,9 @@ def is_markdown_file(file):
     return ext == ".md" and isfile(file)
 
 def get_markdown_files(dir="."):
-    return [f for f in listdir(dir) if is_markdown_file(f)]
+    # print(listdir(dir))
+    lst= [f for f in listdir(dir) if is_markdown_file(join(dir, f))]
+    return lst
 
 def change_ext_to(file, new_ext):
     return get_file_name(file) + "." + new_ext
@@ -60,25 +79,40 @@ def convert_md_in_directory(dir="."):
     for md_file in get_markdown_files(dir):
         html_file = change_ext_to(md_file, "html")
         convert_markdown_file_to_html_file(md_file, html_file)
+        print("%s -> %s" % (md_file, html_file))
 
 
 def main():
-    if len(sys.argv) == 1:
-        print("Enter a file name")
-        return
-    input_file = sys.argv[1] # input_file=1.md
+    # if len(sys.argv) == 1: # python converty.py <CR>
+    #     print("Enter a file name")
+    #     return
+    # input_file = sys.argv[1] # input_file=1.md
+    #
+    # output_file = None
+    # if len(sys.argv) == 2: # python convert.py input.md <CR>
+    #     output_file = change_ext_to(input_file, "html") # output_file=1.html
+    # else: # python convert.py input.md output.html <CR>
+    #     output_file = sys.argv[2]
+    #
+    # convert_markdown_file_to_html_file(input_file, output_file)
 
-    output_file = None
-    if len(sys.argv) == 2:
-        output_file = change_ext_to(input_file, "html") # output_file=1.html
+    arguments = docopt(__doc__, version='Website generator 1.0')
+    if not arguments["--all"]:
+        input_file = arguments['<input_file>']
+        output_file = arguments['<output_file>']
+        if not output_file:
+            output_file = change_ext_to(input_file, "html") # output_file=1.html
+        convert_markdown_file_to_html_file(input_file, output_file)
     else:
-        output_file = sys.argv[2]
+        input_dir = arguments["<input_directory>"]
 
-    convert_markdown_file_to_html_file(input_file, output_file)
+        convert_md_in_directory(input_dir)
 
-if __name__ == "__main__":
-    # main()
-    convert_md_in_directory()
+
+
+
+if __name__ == '__main__':
+    main()
 
 
 print("Done")
