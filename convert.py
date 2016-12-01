@@ -1,24 +1,25 @@
 """Website Converter
 
 Usage:
-  convert.py <input_file> [<output_file>]
-  convert.py --all [<input_directory>] [<output_directory>]
+  convert.py [options] <input_regex>...
   convert.py (-h | --help)
   convert.py --version
 
 Options:
-  -h --help                Show this screen.
-  --version                Show version.
-  --all                    Transform entire directory in-place
+  -h --help              Show this screen.
+  --version              Show version.
+  --output=FILE -o FILE  Output File
 """
+# python conver.py **/*.md raws
 
 import pypandoc
 from bs4 import BeautifulSoup
 import sys
-from os.path import basename, splitext, dirname, join, isfile
+from os.path import basename, splitext, dirname, join, isfile, abspath
 from os import listdir
 import argparse
 from docopt import docopt
+import glob
 
 def get_file_name_and_ext(path):
     base=basename(path) #base=c.txt
@@ -41,15 +42,18 @@ def add_permalink_to_paras(soup):
     return soup
 
 def markdown_to_html(md_file):
+    # TEMPLATE_FILE=r"C:\Users\Toshiba PC\Desktop\static\template.html"
+    # TEMPLATE_FILE="template.html"
     # __file__ = ..\convert.py
     dir=dirname(__file__) # dir = ..
-    template=join(dir, "template.html") # template=..\template.html
+    TEMPLATE_FILE=join(dir, "template.html") # template=..\template.html
 
     html = pypandoc.convert(
         md_file,
         format="markdown",
         to="html",
-        extra_args=["--template="+template]
+        # extra_args=["--template="+TEMPLATE_FILE.strip()]
+        extra_args=["--template="]
     )
     soup=BeautifulSoup(html, "lxml")
     soup=add_permalink_to_paras(soup)
@@ -83,31 +87,18 @@ def convert_md_in_directory(input_dir=".", output_dir="."):
 
 
 def main():
-    # if len(sys.argv) == 1: # python converty.py <CR>
-    #     print("Enter a file name")
-    #     return
-    # input_file = sys.argv[1] # input_file=1.md
-    #
-    # output_file = None
-    # if len(sys.argv) == 2: # python convert.py input.md <CR>
-    #     output_file = change_ext_to(input_file, "html") # output_file=1.html
-    # else: # python convert.py input.md output.html <CR>
-    #     output_file = sys.argv[2]
-    #
-    # convert_markdown_file_to_html_file(input_file, output_file)
-
     arguments = docopt(__doc__, version='Website generator 1.0')
-    if not arguments["--all"]:
-        input_file = arguments['<input_file>']
-        output_file = arguments['<output_file>']
-        if not output_file:
-            output_file = change_ext_to(input_file, "html") # output_file=1.html
-        convert_markdown_file_to_html_file(input_file, output_file)
-    else:
-        input_dir = arguments["<input_directory>"] or "."
-        output_dir = arguments["<output_directory>"] or "."
+    inputs=arguments["<input_regex>"]
+    input_files = []
+    for input in inputs:
+        input_files = input_files + glob.glob(input)
 
-        convert_md_in_directory(input_dir, output_dir)
+    dir = arguments["--output"] or "."
+
+    for input_file in input_files:
+        output_file = join(dir, change_ext_to( input_file,"html"))
+        convert_markdown_file_to_html_file(input_file, output_file)
+
 
 
 
