@@ -42,18 +42,18 @@ def add_permalink_to_paras(soup):
     return soup
 
 def markdown_to_html(md_file):
-    # TEMPLATE_FILE=r"C:\Users\Toshiba PC\Desktop\static\template.html"
+    TEMPLATE_FILE=r"C:\Users\Toshiba PC\Desktop\static\template.html"
     # TEMPLATE_FILE="template.html"
     # __file__ = ..\convert.py
-    dir=dirname(__file__) # dir = ..
-    TEMPLATE_FILE=join(dir, "template.html") # template=..\template.html
+    # dir=dirname(__file__) # dir = ..
+    # TEMPLATE_FILE=join(dir, "template.html") # template=..\template.html
 
     html = pypandoc.convert(
         md_file,
         format="markdown",
         to="html",
-        # extra_args=["--template="+TEMPLATE_FILE.strip()]
-        extra_args=["--template="]
+        extra_args=["--template="+TEMPLATE_FILE]
+        # extra_args=["--template="]
     )
     soup=BeautifulSoup(html, "lxml")
     soup=add_permalink_to_paras(soup)
