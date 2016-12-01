@@ -75,9 +75,9 @@ def get_markdown_files(dir="."):
 def change_ext_to(file, new_ext):
     return get_file_name(file) + "." + new_ext
 
-def convert_md_in_directory(dir="."):
-    for md_file in get_markdown_files(dir):
-        html_file = change_ext_to(md_file, "html")
+def convert_md_in_directory(input_dir=".", output_dir="."):
+    for md_file in get_markdown_files(input_dir):
+        html_file = join(output_dir, change_ext_to(md_file, "html"))
         convert_markdown_file_to_html_file(md_file, html_file)
         print("%s -> %s" % (md_file, html_file))
 
@@ -104,9 +104,10 @@ def main():
             output_file = change_ext_to(input_file, "html") # output_file=1.html
         convert_markdown_file_to_html_file(input_file, output_file)
     else:
-        input_dir = arguments["<input_directory>"]
+        input_dir = arguments["<input_directory>"] or "."
+        output_dir = arguments["<output_directory>"] or "."
 
-        convert_md_in_directory(input_dir)
+        convert_md_in_directory(input_dir, output_dir)
 
 
 
